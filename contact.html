@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>联系 — Studio</title>
+<link rel="stylesheet" href="assets/fonts/local-fonts.css">
+<link rel="stylesheet" href="css/style.css?v=11">
+<style>
+@media (max-width: 768px) {
+  .contact__title { font-size: 2rem !important; line-height: 1.15 !important; }
+  .contact__email { padding: 14px 28px !important; font-size: 14px !important; }
+  .contact__social { font-size: 13px !important; }
+  .contact__socials { gap: 24px !important; }
+  .contact__form { gap: 20px !important; }
+  .form-group input, .form-group textarea { padding: 14px 16px !important; font-size: 14px !important; }
+  .form-group label { font-size: 11px !important; }
+  .contact { padding: 72px 20px !important; }
+  .footer { flex-direction: column !important; text-align: center !important; gap: 12px !important; padding: 28px 20px !important; }
+  .btn { padding: 14px 28px !important; font-size: 13px !important; white-space: nowrap !important; }
+  .nav__logo { font-size: 15px !important; }
+  .mobile-menu a { font-size: 24px !important; }
+}
+@media (max-width: 480px) {
+  .contact__title { font-size: 1.5rem !important; }
+  .contact__email { padding: 12px 20px !important; font-size: 12px !important; }
+  .contact__social { font-size: 12px !important; }
+  .contact__socials { gap: 16px !important; }
+  .contact { padding: 60px 16px !important; }
+  .footer { padding: 24px 16px !important; }
+  .nav { padding: 16px 16px !important; }
+  .nav__logo { font-size: 14px !important; }
+  .mobile-menu a { font-size: 20px !important; }
+  .btn { padding: 12px 22px !important; font-size: 12px !important; }
+}
+</style>
+</head>
+<body class="page-enter">
+
+<div class="glitch-global" id="glitchGlobal" aria-hidden="true">
+  <div class="glitch-global__layer glitch-global__layer--base"></div>
+  <div class="glitch-global__layer glitch-global__layer--r"></div>
+  <div class="glitch-global__layer glitch-global__layer--g"></div>
+  <div class="glitch-global__layer glitch-global__layer--b"></div>
+  <div class="glitch-global__scanlines"></div>
+  <div class="glitch-global__slice glitch-global__slice--1"></div>
+  <div class="glitch-global__slice glitch-global__slice--2"></div>
+</div>
+<div class="noise-overlay"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="progress-bar" id="progressBar"></div>
+<div class="page-transition" id="pageTransition"><span class="page-transition__text">Loading...</span></div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <a href="portfolio.html" class="nav__logo" data-hover data-page>
+    <span class="nav__logo-dot"></span>
+    文艺艺艺艺艺</a>
+  <ul class="nav__menu">
+    <li><a href="portfolio.html" class="nav__link" data-hover data-page>首页</a></li>
+    <li><a href="portfolio.html#portfolio" class="nav__link" data-hover data-page>作品</a></li>
+    <li><a href="about.html" class="nav__link" data-hover data-page>关于</a></li>
+    <li><a href="contact.html" class="nav__link active" data-hover data-page>联系</a></li>
+  </ul>
+  <a href="contact.html" class="nav__cta" data-hover data-page>开始合作</a>
+  <div class="nav__burger" id="burger" data-hover data-page>
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="portfolio.html" data-hover data-page>首页</a>
+  <a href="portfolio.html#portfolio" data-hover data-page>作品</a>
+  <a href="about.html" data-hover data-page>关于</a>
+  <a href="contact.html" data-hover data-page>联系</a>
+</div>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="contact__bg"></div>
+  <div class="neon-glow neon-glow--cyan" style="top:30%;left:20%;"></div>
+  <div class="neon-glow neon-glow--magenta" style="bottom:20%;right:15%;"></div>
+  <div class="contact__inner">
+    <div class="contact__eyebrow reveal-fade">有想法？让我们聊聊</div>
+    <h2 class="contact__title reveal">
+      让下一个<br>
+      <span class="contact__title-accent">好故事</span><br>
+      从这里开始
+    </h2>
+
+    <form class="contact__form reveal-scale reveal-delay-1 reveal-children" onsubmit="event.preventDefault(); alert('感谢留言！我会尽快回复你。');">
+      <div class="form-group">
+        <label for="name">姓名</label>
+        <input type="text" id="name" placeholder="你的名字" data-hover>
+      </div>
+      <div class="form-group">
+        <label for="email">邮箱</label>
+        <input type="email" id="email" placeholder="your@email.com" data-hover>
+      </div>
+      <div class="form-group">
+        <label for="message">项目描述</label>
+        <textarea id="message" rows="3" placeholder="简单描述你的需求..." data-hover></textarea>
+      </div>
+      <button type="submit" class="btn btn--primary" data-hover>
+        发送消息
+        <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </button>
+    </form>
+
+    <a href="mailto:hello@studio.design" class="contact__email reveal reveal-delay-2" data-hover>
+      hello@studio.design
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+    </a>
+    <div class="contact__socials reveal reveal-delay-3">
+      <a href="#" class="contact__social" data-hover>Behance</a>
+      <a href="#" class="contact__social" data-hover>Dribbble</a>
+      <a href="#" class="contact__social" data-hover>Instagram</a>
+      <a href="#" class="contact__social" data-hover>LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer__copy">© 2026 Design. 用心设计每一个像素。</div>
+  <a href="#" class="footer__back" data-hover>
+    返回顶部
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+      <path d="M8 13V3M8 3L3 8M8 3L13 8" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </a>
+</footer>
+
+<script src="js/main.js?v=4"></script>
+</body>
+</html>
