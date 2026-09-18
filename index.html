@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design — 视觉设计师作品集</title>
+<link rel="stylesheet" href="assets/fonts/local-fonts.css">
+<link rel="stylesheet" href="css/style.css?v=11">
+<style>
+/* === MOBILE CRITICAL — inline to bypass CDN cache === */
+@media (max-width: 768px) {
+  .hero__title { font-size: clamp(1.4rem, 5vw, 1.75rem) !important; overflow: visible !important; line-height: 1.15 !important; letter-spacing: -0.03em !important; word-break: break-word !important; }
+  .hero__title-line { overflow: visible !important; }
+  .hero__title-inner { transform: none !important; animation: none !important; }
+  .hero__title-cn { font-size: clamp(0.95rem, 2.5vw, 1.1rem) !important; }
+  .hero__subtitle { font-size: clamp(13px, 1.8vw, 14px) !important; max-width: 100% !important; }
+  .hero__stats { position: relative !important; right: auto !important; bottom: auto !important; justify-content: center !important; gap: 28px !important; margin-top: 48px !important; }
+  .hero__stat-num { font-size: clamp(18px, 3vw, 22px) !important; }
+  .hero__stat-label { font-size: clamp(10px, 1.5vw, 11px) !important; }
+  .btn { padding: clamp(12px, 2vw, 14px) clamp(22px, 3.5vw, 28px) !important; font-size: clamp(12px, 1.7vw, 13px) !important; white-space: nowrap !important; }
+  .section__title { font-size: clamp(1.25rem, 3.5vw, 1.5rem) !important; max-width: 100% !important; word-break: break-word !important; line-height: 1.25 !important; }
+  .section__title-sub { font-size: clamp(0.95rem, 2.2vw, 1.05rem) !important; }
+  .section__title-accent { display: inline !important; font-size: inherit !important; }
+  .section__desc { font-size: clamp(13px, 1.8vw, 14px) !important; max-width: 100% !important; line-height: 1.8 !important; }
+  .section { padding: clamp(60px, 10vw, 72px) clamp(16px, 5vw, 20px) !important; }
+  .section__header { margin-bottom: clamp(32px, 5vw, 40px) !important; }
+  .pf-row { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .pf-text { padding: 0 !important; }
+  .pf-title { font-size: clamp(18px, 3vw, 22px) !important; }
+  .pf-desc { font-size: clamp(13px, 1.8vw, 14px) !important; max-width: 100% !important; }
+  .pf-media { aspect-ratio: 4 / 3 !important; }
+  .pf-media-visual { overflow: hidden !important; }
+  .pf-media-img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+  .services__grid { grid-template-columns: 1fr !important; }
+  .service-card { padding: clamp(24px, 4vw, 32px) clamp(18px, 3vw, 24px) !important; }
+  .service-card__title { font-size: clamp(1.05rem, 2vw, 1.2rem) !important; }
+  .footer { flex-direction: column !important; text-align: center !important; gap: 12px !important; padding: clamp(24px, 4vw, 28px) clamp(16px, 5vw, 20px) !important; }
+  .contact__title { font-size: clamp(1.5rem, 4vw, 2rem) !important; line-height: 1.15 !important; }
+  .contact__email { padding: clamp(12px, 2vw, 14px) clamp(20px, 3.5vw, 28px) !important; font-size: clamp(12px, 1.7vw, 14px) !important; }
+  .portfolio__grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .portfolio__item { aspect-ratio: 4 / 3 !important; }
+  .portfolio__title { font-size: clamp(1rem, 2vw, 1.15rem) !important; }
+  .portfolio__desc { max-height: 100px !important; opacity: 1 !important; font-size: clamp(12px, 1.7vw, 13px) !important; transition: none !important; }
+  .portfolio__visual { transform: none !important; }
+  .portfolio__overlay { opacity: 0.3 !important; }
+  .portfolio__arrow { opacity: 0.6 !important; }
+  .about__text { font-size: clamp(14px, 2.2vw, 16px) !important; }
+  .about__chip { font-size: clamp(11px, 1.6vw, 12px) !important; padding: clamp(6px, 1vw, 7px) clamp(12px, 2vw, 14px) !important; }
+  .about__inner { gap: clamp(28px, 4vw, 32px) !important; }
+  .marquee__item { font-size: clamp(0.85rem, 1.8vw, 1rem) !important; }
+  .mobile-menu a { font-size: clamp(20px, 3.2vw, 24px) !important; }
+  .nav__logo { font-size: clamp(14px, 2vw, 15px) !important; }
+  .hero__scroll { display: none !important; }
+  .hero { padding: clamp(90px, 13vw, 100px) clamp(16px, 5vw, 20px) clamp(40px, 6vw, 48px) !important; }
+  .neon-glow--cyan { width: clamp(150px, 25vw, 200px) !important; height: clamp(150px, 25vw, 200px) !important; }
+  .neon-glow--magenta { width: clamp(130px, 22vw, 180px) !important; height: clamp(130px, 22vw, 180px) !important; }
+  .filter-bar { flex-direction: column; gap: 16px !important; margin-bottom: 32px !important; }
+  .filter-bar__group { flex-direction: column; align-items: flex-start !important; gap: 10px !important; }
+  .stone-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .stone-card__name { font-size: 16px !important; }
+}
+@media (max-width: 480px) {
+  .hero__title { font-size: clamp(1.15rem, 4.5vw, 1.4rem) !important; }
+  .hero__title-cn { font-size: clamp(0.85rem, 2.2vw, 0.95rem) !important; }
+  .hero__subtitle { font-size: clamp(12px, 1.6vw, 13px) !important; }
+  .btn { padding: clamp(10px, 2.5vw, 12px) clamp(18px, 4.6vw, 22px) !important; font-size: clamp(11px, 2.5vw, 12px) !important; }
+  .section__title { font-size: clamp(1.1rem, 3vw, 1.25rem) !important; }
+  .section__title-sub { font-size: clamp(0.85rem, 2vw, 0.95rem) !important; }
+  .section__desc { font-size: clamp(12px, 1.6vw, 13px) !important; }
+  .section { padding: clamp(48px, 12.5vw, 60px) clamp(12px, 3.3vw, 16px) !important; }
+  .contact { padding: clamp(48px, 12.5vw, 60px) clamp(12px, 3.3vw, 16px) !important; }
+  .contact__title { font-size: clamp(1.25rem, 3.1vw, 1.5rem) !important; }
+  .pf-title { font-size: clamp(16px, 3.75vw, 18px) !important; }
+  .pf-desc { font-size: clamp(12px, 1.6vw, 13px) !important; }
+  .pf-media { aspect-ratio: 1 / 1 !important; }
+  .portfolio__title { font-size: clamp(0.9rem, 2.1vw, 1rem) !important; }
+  .portfolio__desc { font-size: clamp(11px, 2.5vw, 12px) !important; }
+  .portfolio__item { aspect-ratio: 1 / 1 !important; }
+  .service-card { padding: clamp(20px, 5vw, 24px) clamp(14px, 3.75vw, 18px) !important; }
+  .service-card__title { font-size: clamp(0.95rem, 2.5vw, 1.05rem) !important; }
+  .about__text { font-size: clamp(13px, 2.9vw, 14px) !important; }
+  .about__chip { font-size: clamp(10px, 2.3vw, 11px) !important; padding: clamp(5px, 1.25vw, 6px) clamp(10px, 2.5vw, 12px) !important; }
+  .footer { padding: clamp(20px, 5vw, 24px) clamp(12px, 3.3vw, 16px) !important; }
+  .nav { padding: clamp(12px, 3.3vw, 16px) !important; }
+  .nav.scrolled { padding: clamp(10px, 2.5vw, 12px) clamp(12px, 3.3vw, 16px) !important; }
+  .nav__logo { font-size: 14px !important; }
+  .mobile-menu a { font-size: 20px !important; }
+  .marquee__item { font-size: 0.85rem !important; }
+  .hero__stat-num { font-size: 18px !important; }
+  .hero__stat-label { font-size: 10px !important; }
+  .hero__stats { gap: 20px !important; margin-top: 36px !important; }
+}
+.filter-bar { display:flex; flex-wrap:wrap; gap:28px; margin-bottom:48px; padding:24px 0; border-top:1px solid rgba(63,236,232,0.15); border-bottom:1px solid rgba(63,236,232,0.15); }
+.filter-bar__group { display:flex; align-items:center; gap:16px; }
+.filter-bar__label { font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(244,241,236,0.5); white-space:nowrap; }
+.filter-bar__opts { display:flex; flex-wrap:wrap; gap:8px;}
+.pill { display:inline-flex; align-items:center; padding:7px 16px; border:1px solid rgba(63,236,232,0.25); border-radius:100px; background:transparent; color:rgba(244,241,236,0.7); font-family:var(--font-body); font-size:13px; cursor:pointer; transition:all 0.3s var(--ease); }
+.pill:hover { border-color:var(--accent); color:var(--accent); }
+.pill.is-active { border-color:#ff007f; color:#ff007f; }
+.active-chips { display:flex; align-items:center; gap:16px; margin-bottom:32px; }
+.active-chips__count { font-family:var(--font-mono); font-size:13px; color:rgba(244,241,236,0.6); }
+.active-chips__count b { color:var(--accent); font-weight:700; }
+.stone-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+.stone-card { display:flex; flex-direction:column; opacity:1; transform:translateY(0); transition:opacity 0.4s ease, transform 0.4s ease; }
+.stone-card.is-hidden { display:none; }
+.stone-card__media { position:relative; aspect-ratio:4/3; overflow:hidden; border-radius:4px; cursor:pointer; }
+.stone-card__img { position:absolute; inset:0; background-size:cover; background-position:center; transition:transform 0.6s var(--ease); }
+.stone-card:hover .stone-card__img { transform:scale(1.05); }
+.stone-card__overlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(10,10,15,0.45); opacity:0; transition:opacity 0.4s ease; }
+.stone-card:hover .stone-card__overlay { opacity:1; }
+.stone-card__action { font-family:var(--font-mono); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#3fece8; transition:transform 0.4s var(--ease); }
+.stone-card__tag { position:absolute; top:16px; left:16px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.05em; color:rgba(244,241,236,0.8); background:rgba(10,10,15,0.6); padding:4px 10px; border-radius:2px; backdrop-filter:blur(8px); }
+.stone-card__body { padding:20px 4px 0; }
+.stone-card__head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:8px; }
+.stone-card__name { font-family:var(--font-heading); font-size:18px; font-weight:500; color:#f4f1ec; line-height:1.3; }
+.stone-card__name small { display:block; font-family:var(--font-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(244,241,236,0.45); margin-top:4px; font-weight:400; }
+.stone-card__meta { font-family:var(--font-mono); font-size:12px; color:rgba(244,241,236,0.45); display:flex; align-items:center; gap:8px; }
+.stone-empty { text-align:center; padding:80px 20px; }
+.stone-empty.is-hidden { display:none; }
+.stone-empty__title { font-family:var(--font-heading); font-size:24px; color:#f4f1ec; margin-bottom:12px; }
+.stone-empty__text { font-size:14px; color:rgba(244,241,236,0.5); }
+
+.stone-card__detail { display:grid; grid-template-rows:0fr; transition:grid-template-rows 0.5s var(--ease); }
+.stone-card.is-expanded .stone-card__detail { grid-template-rows:1fr; }
+.stone-card__detail-inner { overflow:hidden; }
+.stone-card__detail-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; padding:20px 0 0; }
+.stone-card__detail-item { aspect-ratio:1; border:1px solid rgba(63,236,232,0.15); border-radius:4px; position:relative; overflow:hidden; cursor:pointer; transition:all 0.3s var(--ease); }
+.stone-card__detail-item:hover { border-color:rgba(63,236,232,0.5); transform:translateY(-2px); }
+.stone-card__detail-item-thumb { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0.6; transition:opacity 0.3s var(--ease); }
+.stone-card__detail-item:hover .stone-card__detail-item-thumb { opacity:1; }
+.stone-card__detail-item-overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(to top, rgba(10,10,15,0.85) 0%, rgba(10,10,15,0.3) 60%, transparent 100%); padding:8px 4px; text-align:center; }
+.stone-card__detail-num { font-family:var(--font-mono); font-size:15px; color:rgba(63,236,232,0.8); margin-bottom:4px; position:relative; z-index:1; }
+.stone-card__detail-label { font-size:11px; color:rgba(244,241,236,0.9); line-height:1.3; position:relative; z-index:1; }
+
+.detail-viewer { position:fixed; top:0; right:-50%; width:45%; height:100vh; background:rgba(8,8,12,0.98); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-left:1px solid rgba(63,236,232,0.2); z-index:2000; transition:right 0.5s cubic-bezier(0.16,1,0.3,1); display:flex; flex-direction:column; }
+.detail-viewer.is-open { right:0; }
+.detail-viewer__header { display:flex; align-items:center; justify-content:space-between; padding:20px 28px; border-bottom:1px solid rgba(63,236,232,0.15); flex-shrink:0; }
+.detail-viewer__title { font-family:var(--font-heading); font-size:16px; color:#f4f1ec; }
+.detail-viewer__close { width:36px; height:36px; display:flex; align-items:center; justify-content:center; background:none; border:1px solid rgba(63,236,232,0.25); border-radius:50%; color:var(--accent); cursor:pointer; transition:all 0.3s var(--ease); font-size:18px; }
+.detail-viewer__close:hover { background:rgba(63,236,232,0.1); transform:rotate(90deg); }
+.detail-viewer__body { flex:1; overflow-y:auto; overflow-x:hidden; padding:24px 28px; }
+.detail-viewer__body::-webkit-scrollbar { width:4px; }
+.detail-viewer__body::-webkit-scrollbar-track { background:transparent; }
+.detail-viewer__body::-webkit-scrollbar-thumb { background:rgba(63,236,232,0.3); border-radius:2px; }
+.detail-viewer__img { width:100%; height:auto; display:block; margin-bottom:20px; border-radius:4px; }
+.detail-viewer__desc { font-size:13px; color:rgba(244,241,236,0.6); line-height:1.7; }
+.detail-viewer__mask { position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1999; opacity:0; pointer-events:none; transition:opacity 0.4s ease; }
+.detail-viewer__mask.is-open { opacity:1; pointer-events:auto; }
+.stone-card.is-expanded .stone-card__action { transform:rotate(90deg); }
+.stone-card.is-expanded .stone-card__overlay { opacity:0.3; }
+@media (max-width:968px) { .stone-grid { grid-template-columns:repeat(2,1fr); } .stone-card__detail-grid { grid-template-columns:repeat(5,1fr); } }
+@media (max-width:640px) { .stone-grid { grid-template-columns:1fr; gap:24px; } .filter-bar { gap:16px; } .filter-bar__group { flex-direction:column; align-items:flex-start; gap:10px; } .stone-card__detail-grid { grid-template-columns:repeat(3,1fr); } .detail-viewer { width:100%; right:-100%; } .detail-viewer.is-open { right:0; } }
+</style>
+</head>
+<body class="page-enter">
+
+<div class="tech-grid"></div>
+<canvas class="particle-canvas" id="particleCanvas" width="1085" height="916"></canvas>
+<div class="glitch-global" id="glitchGlobal" aria-hidden="true">
+  <div class="glitch-global__layer glitch-global__layer--base" style="transform: translate(-0.9px, -0.4px);"></div>
+  <div class="glitch-global__layer glitch-global__layer--r" style="transform: translate(-1.9px, -0.9px);"></div>
+  <div class="glitch-global__layer glitch-global__layer--g" style="transform: translate(-2.8px, -1.3px);"></div>
+  <div class="glitch-global__layer glitch-global__layer--b" style="transform: translate(-3.7px, -1.8px);"></div>
+  <div class="glitch-global__scanlines"></div>
+  <div class="glitch-global__slice glitch-global__slice--1"></div>
+  <div class="glitch-global__slice glitch-global__slice--2"></div>
+</div>
+<div class="noise-overlay"></div>
+<div class="cursor-dot" id="cursorDot" style="left: 360px; top: 321px;"></div>
+<div class="cursor-ring" id="cursorRing" style="left: 360px; top: 321px;"></div>
+<div class="progress-bar" id="progressBar" style="width: 37.5505%;"></div>
+
+<!-- Navigation -->
+<nav class="nav scrolled" id="nav">
+  <a href="#home" class="nav__logo" data-hover="" style="">
+    <span class="nav__logo-dot glitch-flash"></span>
+    文艺艺艺艺艺</a>
+  <ul class="nav__menu">
+    <li><a href="#home" class="nav__link" data-hover="">首页</a></li>
+    <li><a href="#portfolio" class="nav__link active" data-hover="">作品</a></li>
+    <li><a href="#about" class="nav__link" data-hover="">关于</a></li>
+    <li></li>
+  </ul>
+  <a href="#contact" class="nav__cta" data-hover="" style="">开始合作</a>
+  <div class="nav__burger" id="burger" data-hover="">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" data-hover="">首页</a>
+  <a href="#portfolio" data-hover="">作品</a>
+  <a href="#about" data-hover="">关于</a>
+  <a href="#contact" data-hover="">联系</a>
+</div>
+
+<!-- ============================================
+     01 — 首页 / HERO
+     ============================================ -->
+<section class="hero section-dim is-dimmed" id="home">
+  <div class="hero__bg" style="transform: translateY(255.6px);"></div>
+  <div class="hero__glitch-bg">
+    <div class="hero__glitch-layer hero__glitch-layer--base" style=""></div>
+    <div class="hero__glitch-layer hero__glitch-layer--r" style=""></div>
+    <div class="hero__glitch-layer hero__glitch-layer--g" style=""></div>
+    <div class="hero__glitch-layer hero__glitch-layer--b" style=""></div>
+    <div class="hero__glitch-scanlines"></div>
+    <div class="hero__glitch-slice hero__glitch-slice--1"></div>
+    <div class="hero__glitch-slice hero__glitch-slice--2"></div>
+    <div class="hero__glitch-slice hero__glitch-slice--3"></div>
+  </div>
+  <div class="hero__aurora">
+    <div class="hero__aurora-band hero__aurora-band--1"></div>
+    <div class="hero__aurora-band hero__aurora-band--2"></div>
+    <div class="hero__aurora-band hero__aurora-band--3"></div>
+  </div>
+  <div class="hero__mouse-glow" id="heroMouseGlow" style="left: 650.999px; top: 797.999px;"></div>
+  <div class="hero__orb">
+    <div class="hero__orb-ring"></div>
+    <div class="hero__orb-ring hero__orb-ring--2"></div>
+    <div class="hero__orb-ring hero__orb-ring--3"></div>
+    <div class="hero__orb-core"></div>
+  </div>
+  <div class="neon-glow neon-glow--cyan" style="top:15%;right:5%;"></div>
+  <div class="neon-glow neon-glow--magenta" style="bottom:10%;left:0%;"></div>
+  <div class="grid-marker grid-marker--tl"></div>
+  <div class="grid-marker grid-marker--tr"></div>
+  <div class="grid-marker grid-marker--bl"></div>
+  <div class="grid-marker grid-marker--br"></div>
+  <div class="hero__center-text">文艺艺艺艺艺</div>
+  <div class="hero__content">
+    <div class="hero__eyebrow reveal-fade reveal-delay-1 visible">
+      <span class="hero__eyebrow-line"></span>
+      <span>独立设计师 · 作品集 2026</span>
+    </div>
+    <h1 class="hero__title">
+      <span class="hero__title-line"><span class="hero__title-inner">Design <span class="hero__title-accent glitch-flash glitch-pull" data-text="Speaks">Speaks</span></span></span>
+      <span class="hero__title-line"><span class="hero__title-inner">in Silence.</span></span>
+      <span class="hero__title-line"><span class="hero__title-inner hero__title-cn">用设计讲述 <span class="hero__title-accent glitch" data-text="无声">无声</span> 的故事</span></span>
+    </h1>
+    <p class="hero__subtitle reveal reveal-delay-3 visible">
+      <span class="typed-text" id="typedText"></span><span class="cursor-blink"></span>
+    </p>
+    <div class="hero__actions reveal-scale reveal-delay-3 visible">
+      <a href="#portfolio" class="btn btn--primary glitch-flash" data-hover="" style="">
+        浏览作品
+        <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5"></path>
+        </svg>
+      </a>
+      <a href="#contact" class="btn btn--ghost glitch-flash" data-hover="" style="">联系我</a>
+    </div>
+    <div class="hero__stats">
+      <div class="reveal-left reveal-delay-2 visible">
+        <div class="hero__stat-num">20+</div>
+        <div class="hero__stat-label">项目交付</div>
+      </div>
+      <div class="reveal reveal-delay-3 visible">
+        <div class="hero__stat-num">3年</div>
+        <div class="hero__stat-label">设计经验</div>
+      </div>
+      <div class="reveal-right reveal-delay-4 visible">
+        <div class="hero__stat-num">8+</div>
+        <div class="hero__stat-label">掌握工具数</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero__scroll reveal-fade reveal-delay-5 visible is-hidden">
+    <span>向下滚动</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<!-- ============================================
+     02 — 作品 / PORTFOLIO (Asymmetric Narrative)
+     ============================================ -->
+<section class="section portfolio section-dim" id="portfolio">
+  <div class="section__header reveal visible">
+    <div class="section__eyebrow reveal-fade visible">
+      <span class="section__eyebrow-num">02</span>
+      <span class="section__eyebrow-line"></span>
+      <span>精选作品</span>
+    </div>
+    <h1 class="section__title reveal visible"><span class="section__title-main">Every project is a</span><span class="section__title-accent glitch" data-text="conversation"> conversation</span></h1>
+    <h2 class="section__title-sub reveal visible"><span>每一个项目都是一次</span><span class="section__title-accent glitch" data-text="对话">对话</span></h2>
+    <p class="section__desc reveal reveal-delay-1 visible">从小红书笔记到微信公众号，从网页设计到视觉体系——以下是我在内容设计与前端实践中的真实作品。</p>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar reveal visible" id="portfolioFilter" style="position: relative;">
+    <div class="filter-bar__group">
+      <span class="filter-bar__label">类型 / Type</span>
+      <div class="filter-bar__opts">
+        <button class="pill is-active" data-filter="all">全部作品</button>
+        <button class="pill" data-filter="xhs">小红书笔记</button>
+        <button class="pill" data-filter="wechat">公众号推文</button>
+        <button class="pill" data-filter="web">网页设计</button>
+        <button class="pill" data-filter="packaging">包装设计</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result count -->
+  <div class="active-chips reveal visible">
+    <span class="active-chips__count"><b id="resultCount">6</b><span> 类视觉作品</span></span>
+  </div>
+
+  <!-- Work Grid -->
+  <div class="stone-grid" id="workGrid">
+    
+    <article class="stone-card" data-category="xhs">
+      <div class="stone-card__media">
+        <div class="stone-card__img" style="background-image:url('assets/images/01.jpg')"></div>
+        <div class="stone-card__overlay">
+          <span class="stone-card__action">查看案例 →</span>
+        </div>
+        <span class="stone-card__tag">01 / 小红书笔记</span>
+      </div>
+      <div class="stone-card__body">
+        <div class="stone-card__head">
+          <h3 class="stone-card__name">岩屿石英砖<small>XHS NOTE DESIGN</small></h3>
+        </div>
+        <div class="stone-card__meta"><span>品牌视觉</span>|<span>探店笔记</span>|<span>封面排版</span></div>
+        <div class="stone-card__detail"><div class="stone-card__detail-inner"><div class="stone-card__detail-grid">
+          <div class="stone-card__detail-item" data-img="assets/images/01-01.png" data-title="01 新品首发" data-desc="以岩屿品牌视觉体系为基础，设计小红书笔记封面模板。采用杂志感排版风格，主视觉突出石英砖材质细节，配合品牌色调整体营造高端质感。封面布局包含品牌标识、产品主图和核心卖点三层信息结构，确保在信息流中一眼抓住用户注意力。">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/01-01/01-01封面.png')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">01</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+          <div class="stone-card__detail-item" data-imgs="assets/images/01-02.png" data-title="02 庭院设计师石英砖选材" data-desc="内页采用网格化排版系统，图文比例经过精心调配，确保阅读流畅不疲劳。品牌字体与辅助字体搭配使用，建立清晰的信息层级，让用户在滑动中快速获取关键信息。向下滚动查看更多内页细节。">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/01-02/01-02封面.png')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">02</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+          <div class="stone-card__detail-item" data-img="assets/images/01-03.png" data-title="03 随手一拍都是氛围感" data-desc="品牌主色调采用深邃岩灰色搭配青色点缀，呼应石英砖的天然质感与现代工艺之美。色彩系统严格遵循品牌VI规范，确保每一次曝光都在强化品牌认知。">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/01-03/01-03封面.png')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">03</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+          <div class="stone-card__detail-item" data-img="assets/images/01-04.png" data-title="04 洞石质感古堡拼" data-desc="建立了完整的小红书笔记视觉模板系统，涵盖封面、内页、尾页等多种版式，确保品牌输出一致性，同时大幅提升内容生产效率。">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/01-04/01-04封面.png')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">04</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+          <div class="stone-card__detail-item" data-img="assets/images/01-05.png" data-title="05 水磨石颗粒石英砖" data-desc="笔记发布后首周曝光量提升180%，互动率达到行业均值的2.3倍，品牌搜索指数增长明显。高质量的视觉设计是内容破圈的核心驱动力。">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/01-05/01-05封面.png')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">05</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+    </article>
+
+    <article class="stone-card" data-category="xhs">
+      <div class="stone-card__media">
+        <div class="stone-card__img" style="background-image:url('assets/images/03.png')"></div>
+        <div class="stone-card__overlay">
+          <span class="stone-card__action">查看案例 →</span>
+        </div>
+        <span class="stone-card__tag">02 / 小红书海报</span>
+      </div>
+      <div class="stone-card__body">
+        <div class="stone-card__head">
+          <h3 class="stone-card__name">石英砖铺装效果<small>XHS POSTER DESIGN</small></h3>
+        </div>
+        <div class="stone-card__meta"><span>杂志感</span>|<span>效果图</span>|<span>专业摄影</span></div>
+        <div class="stone-card__detail"><div class="stone-card__detail-inner"><div class="stone-card__detail-grid">
+          <div class="stone-card__detail-item" data-img="assets/images/阿尔卑斯/阿尔卑斯.png" data-title="01 阿尔卑斯 Alps" data-desc="">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/阿尔卑斯/阿尔卑斯-1.jpg')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">01</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+         </div>
+         <div class="stone-card__detail-item" data-img="assets/images/柏利/柏利.png" data-title="02 柏利 Berrly" data-desc="">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/柏利/柏利-1.jpg')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">02</span>
+              <span class="stone-card__detail-label"></span>
+           </div>
+         </div>
+         <div class="stone-card__detail-item" data-img="assets/images/火山岩/火山岩.png" data-title="03 火山岩 Lava Stone" data-desc="">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/火山岩/火山岩-1.jpg')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">03</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+          <div class="stone-card__detail-item" data-img="assets/images/拉齐奥/拉齐奥.png" data-title="04 拉齐奥 Lazio" data-desc="">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/拉齐奥/拉齐奥-1.jpg')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">04</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+          <div class="stone-card__detail-item" data-img="assets/images/云序/云序.png" data-title="05 云序 Nuvolis" data-desc="">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/云序/云序-1.jpg')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">05</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+    </article>
+
+   <article class="stone-card" data-category="wechat">
+      <div class="stone-card__media">
+        <div class="stone-card__img" style="background-image:url('assets/images/05.jpg')"></div>
+        <div class="stone-card__overlay">
+          <span class="stone-card__action">查看案例 →</span>
+        </div>
+        <span class="stone-card__tag">03 / 节日海报</span>
+      </div>
+      <div class="stone-card__body">
+        <div class="stone-card__head">
+          <h3 class="stone-card__name">节日营销长图<small>WECHAT POSTER DESIGN</small></h3>
+        </div>
+        <div class="stone-card__meta"><span>节日营销</span>|<span>品牌调性</span>|<span>海报</span></div>
+        <div class="stone-card__detail"><div class="stone-card__detail-inner"><div class="stone-card__detail-grid">
+          <div class="stone-card__detail-item" data-img="assets/images/端午节海报.png" data-title="01 端午节" data-desc="岩屿石英砖 | 端午至，福满庭  以天然肌理致敬端午文脉 以硬核品质守护庭院朝夕"> 
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/端午节海报.png')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">01</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+          <div class="stone-card__detail-item" data-img="assets/images/劳动节海报.png" data-title="02 劳动节" data-desc="岩屿石英砖 | 5·1 致敬每一位劳动者 每一步，都踏着自然的节奏 此刻起，身向自由，心无疆界">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/劳动节海报.png')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">02</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+          <div class="stone-card__detail-item" data-img="assets/images/清明节海报.png" data-title="03 清明节" data-desc="岩屿石英砖 | 春色依旧，不负时光  雨落清明，青石生烟 一院静谧，藏尽春日哀思与生机">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/清明节海报.png')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">03</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+    </article>
+
+    <article class="stone-card is-expanded" data-category="web">
+      <div class="stone-card__media">
+        <div class="stone-card__img" style="background-image:url('assets/images/04.png')"></div>
+        <div class="stone-card__overlay">
+          <span class="stone-card__action">查看案例 →</span>
+        </div>
+        <span class="stone-card__tag">04 / 网页设计</span>
+      </div>
+      <div class="stone-card__body">
+        <div class="stone-card__head">
+          <h3 class="stone-card__name">极简品牌官网<small>WEB DESIGN</small></h3>
+        </div>
+        <div class="stone-card__meta"><span>响应式</span>|<span>前端开发</span>|<span>全链路</span></div>
+        <div class="stone-card__detail"><div class="stone-card__detail-inner"><div class="stone-card__detail-grid">
+          <div class="stone-card__detail-item" data-img="assets/images/网页设计/1-首页.png" data-title="01 首页" data-desc="https://a120c4f9.rockisle.pages.dev">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/04.png')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">01</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+    </article>
+
+    <article class="stone-card" data-category="wechat">
+      <div class="stone-card__media">
+        <div class="stone-card__img" style="background-image:url('assets/images/02.jpg')"></div>
+        <div class="stone-card__overlay">
+          <span class="stone-card__action">查看案例 →</span>
+        </div>
+        <span class="stone-card__tag">05 / 公众号推文</span>
+      </div>
+      <div class="stone-card__body">
+        <div class="stone-card__head">
+          <h3 class="stone-card__name">品牌故事长图文<small>WECHAT LAYOUT</small></h3>
+        </div>
+        <div class="stone-card__meta"><span>长图文</span>|<span>产品叙事</span>|<span>公众号</span></div>
+        <div class="stone-card__detail"><div class="stone-card__detail-inner"><div class="stone-card__detail-grid">
+          <div class="stone-card__detail-item" data-img="assets/images/0225莱姆石系列卡斯托.jpg" data-title="01 莱姆石系列 Limestone Series" data-desc=""> 
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/05-05莱姆石.jpg')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">01</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+          <div class="stone-card__detail-item" data-img="assets/images/0319砂岩系列卓奥宣推公众号设计.jpg" data-title="02 砂岩系列 Sandstone Series" data-desc=""> 
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/05-05砂岩.png')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">02</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+          <div class="stone-card__detail-item" data-img="assets/images/0514水磨石系列科塔公众号推文设计.jpg" data-title="03 水磨石系列 Terrazzo Series" data-desc=""> 
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/05-05水磨石.png')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">03</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+          <div class="stone-card__detail-item" data-img="assets/images/0521古堡系列罗曼公众号.jpg" data-title="04 古堡系列 Castle-Stone tiles" data-desc=""> 
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/05-05古堡.jpg')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">04</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+          <div class="stone-card__detail-item" data-img="assets/images/星河.jpg" data-title="05 花岗岩 Granite Series" data-desc=""> 
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/05-05星河.jpg')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">05</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+    </article>
+
+    <article class="stone-card" data-category="packaging">
+      <div class="stone-card__media">
+        <div class="stone-card__img" style="background-image:url('assets/images/包装设计/米-红资源1.jpg')"></div>
+        <div class="stone-card__overlay">
+          <span class="stone-card__action">查看案例 →</span>
+        </div>
+        <span class="stone-card__tag">06 / 包装设计</span>
+      </div>
+      <div class="stone-card__body">
+        <div class="stone-card__head">
+          <h3 class="stone-card__name">品牌包装设计<small>PACKAGING DESIGN</small></h3>
+        </div>
+        <div class="stone-card__meta"><span>包装</span>|<span>品牌视觉</span>|<span>全链路</span></div>
+        <div class="stone-card__detail"><div class="stone-card__detail-inner"><div class="stone-card__detail-grid">
+          <div class="stone-card__detail-item" data-img="assets/images/06.jpg,assets/images/包装设计/coconut.jpg,assets/images/包装设计/lilac.jpg,assets/images/包装设计/orange.jpg,assets/images/包装设计/pink.jpg,assets/images/包装设计/rose.jpg,assets/images/包装设计/BLOOM刀版.jpg,assets/images/包装设计/实拍图-1.jpg,assets/images/包装设计/实拍图-4.jpg" data-title="06 BLOOM系列" data-desc="">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/06.jpg')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">01</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+          <div class="stone-card__detail-item" data-img="assets/images/包装设计/资源 11.png,assets/images/包装设计/刀版排版.jpg,assets/images/包装设计/实拍图-2.jpg,assets/images/包装设计/实拍图-3.jpg" data-title="02 美妆类" data-desc="">
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/包装设计/资源 11.png')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">02</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+          <div class="stone-card__detail-item" data-img="assets/images/包装设计/米-红资源 5.jpg" data-title="03 洗浴类" data-desc=""> 
+            <div class="stone-card__detail-item-thumb" style="background-image:url('assets/images/包装设计/P1-1.png')"></div>
+            <div class="stone-card__detail-item-overlay">
+              <span class="stone-card__detail-num">03</span>
+              <span class="stone-card__detail-label"></span>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Empty state -->
+  <div class="stone-empty is-hidden" id="stoneEmpty">
+    <p class="stone-empty__title">未找到匹配的作品</p>
+    <p class="stone-empty__text">尝试调整筛选条件，或清除全部重新探索。</p>
+  </div>
+
+</section>
+
+<!-- Marquee -->
+<div class="marquee reveal-blur visible">
+  <div class="marquee__track">
+    <span class="marquee__item" data-hover=""><span class="marquee__index">01</span>小红书笔记设计</span>
+    <span class="marquee__sep">·</span>
+    <span class="marquee__item" data-hover=""><span class="marquee__index">02</span>微信公众号排版</span>
+    <span class="marquee__sep">·</span>
+    <span class="marquee__item" data-hover=""><span class="marquee__index">03</span>网页设计</span>
+    <span class="marquee__sep">·</span>
+    <span class="marquee__item" data-hover=""><span class="marquee__index">04</span>视觉内容策划</span>
+    <span class="marquee__sep">·</span>
+    <span class="marquee__item" data-hover=""><span class="marquee__index">05</span>前端开发</span>
+    <span class="marquee__sep">·</span>
+    <span class="marquee__item" data-hover=""><span class="marquee__index">01</span>小红书笔记设计</span>
+    <span class="marquee__sep">·</span>
+    <span class="marquee__item" data-hover=""><span class="marquee__index">02</span>微信公众号排版</span>
+    <span class="marquee__sep">·</span>
+    <span class="marquee__item" data-hover=""><span class="marquee__index">03</span>网页设计</span>
+    <span class="marquee__sep">·</span>
+    <span class="marquee__item" data-hover=""><span class="marquee__index">04</span>视觉内容策划</span>
+    <span class="marquee__sep">·</span>
+    <span class="marquee__item" data-hover=""><span class="marquee__index">05</span>前端开发</span>
+    <span class="marquee__sep">·</span>
+  </div>
+</div>
+
+<!-- ============================================
+     03 — 关于 / ABOUT
+     ============================================ -->
+<section class="section about section-dim is-dimmed" id="about">
+  <div class="section__header reveal visible">
+    <div class="section__eyebrow reveal-fade visible">
+      <span class="section__eyebrow-num">03</span>
+      <span class="section__eyebrow-line"></span>
+      <span>关于我</span>
+    </div>
+    <h2 class="section__title reveal visible">设计是<span class="section__title-accent glitch" data-text="解决问题">解决问题</span>&nbsp;的艺术</h2>
+  </div>
+  <div class="about__inner">
+    <div class="about__bio reveal-left visible">
+      <span class="about__label">// IDENTITY</span>
+      <p class="about__text">内容设计师，专注小红书笔记与公众号排版，自学前端写网页代码。</p>
+    </div>
+    <div class="about__bio reveal-right reveal-delay-1 visible">
+      <span class="about__label">// SKILLS</span>
+      <div class="about__chips">
+        <span class="about__chip glitch-pull" data-hover="" data-text="小红书笔记">小红书笔记</span>
+        <span class="about__chip glitch-pull" data-hover="" data-text="公众号排版">公众号排版</span>
+        <span class="about__chip glitch-pull" data-hover="" data-text="网页设计">网页设计</span>
+        <span class="about__chip glitch-pull" data-hover="" data-text="HTML/CSS/JS">HTML/CSS/JS</span>
+        <span class="about__chip glitch-pull" data-hover="" data-text="包装设计">包装设计</span>
+        <span class="about__chip glitch-pull" data-hover="" data-text="品牌设计">品牌设计</span>
+      </div>
+    </div>
+    <div class="about__bio reveal-left reveal-delay-2 visible">
+      <span class="about__label">// TOOLS</span>
+      <div class="about__chips">
+        <span class="about__chip about__chip--alt glitch-pull" data-hover="" data-text="Figma">Figma</span>
+        <span class="about__chip about__chip--alt glitch-pull" data-hover="" data-text="Photoshop">Photoshop</span>
+        <span class="about__chip about__chip--alt glitch-pull" data-hover="" data-text="Adobe Illustrator">Adobe Illustrator</span>
+        <span class="about__chip about__chip--alt glitch-pull" data-hover="" data-text="GPT">GPT</span>
+        <span class="about__chip about__chip--alt glitch-pull" data-hover="" data-text="TRAE">TRAE</span>
+        <span class="about__chip about__chip--alt glitch-pull" data-hover="" data-text="CAD">CAD</span>
+      </div>
+    </div>
+    <div class="about__status reveal-scale reveal-delay-3 visible">
+      <span class="about__status-dot glitch-flash"></span>
+      <span>开放合作中</span>
+    </div>
+  </div>
+</section>
+
+<!-- Services (under About) -->
+<section class="section services section-dim is-dimmed">
+  <div class="section__header reveal visible">
+    <div class="section__eyebrow reveal-fade visible">
+      <span class="section__eyebrow-num">04</span>
+      <span class="section__eyebrow-line"></span>
+      <span>专业服务</span>
+    </div>
+    <h2 class="section__title reveal visible">从概念到<span class="section__title-accent glitch" data-text="落地" style="text-align: center;">落地</span>&nbsp;的全链路</h2>
+    <p class="section__desc reveal reveal-delay-1 visible">三大核心板块，覆盖从内容创作到页面上线的每一个设计需求。</p>
+  </div>
+  <div class="services__grid">
+    <div class="service-card visible is-visible" data-anim="left" data-hover="">
+      <div class="service-card__num">01 / XHS</div>
+      <div class="service-card__icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7L12 12L22 7L12 2Z"></path><path d="M2 17L12 22L22 17"></path><path d="M2 12L12 17L22 12"></path></svg>
+      </div>
+      <h3 class="service-card__title">小红书笔记设计</h3>
+      <p class="service-card__desc">为你的小红书账号打造高点击率的视觉笔记体系，从封面模板到内页排版统一风格。</p>
+      <ul class="service-card__list">
+        <li>笔记封面设计</li>
+        <li>内页图文排版</li>
+        <li>账号视觉风格统一</li>
+        <li>选题与视觉策划</li>
+      </ul>
+    </div>
+    <div class="service-card visible is-visible" data-anim="scale" data-hover="">
+      <div class="service-card__num">02 / Layout</div>
+      <div class="service-card__icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9H21M9 21V9"></path></svg>
+      </div>
+      <h3 class="service-card__title">公众号内容排版</h3>
+      <p class="service-card__desc">将你的品牌内容转化为可读性极强的公众号图文，注重阅读节奏与视觉留白。</p>
+      <ul class="service-card__list">
+        <li>公众号长图文排版</li>
+        <li>品牌推文视觉设计</li>
+        <li>节日营销内容策划</li>
+        <li>排版模板体系搭建</li>
+      </ul>
+    </div>
+    <div class="service-card visible is-visible" data-anim="right" data-hover="">
+      <div class="service-card__num">03 / Web</div>
+      <div class="service-card__icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22"></path><path d="M12 6V12L16 14"></path></svg>
+      </div>
+      <h3 class="service-card__title">网页设计与开发</h3>
+      <p class="service-card__desc">将设计思维延伸到网页端，从视觉设计到前端代码实现全链路独立交付。</p>
+      <ul class="service-card__list">
+        <li>响应式网页设计</li>
+        <li>HTML/CSS/JS 开发</li>
+        <li>品牌官网落地</li>
+        <li>个人作品集搭建</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     05 — 联系 / CONTACT
+     ============================================ -->
+<section class="contact section-dim is-dimmed" id="contact">
+  <div class="contact__bg"></div>
+  <div class="neon-glow neon-glow--cyan" style="top:30%;left:20%;"></div>
+  <div class="neon-glow neon-glow--magenta" style="bottom:20%;right:15%;"></div>
+  <div class="contact__inner">
+    <div class="contact__eyebrow reveal-fade visible">有想法？让我们聊聊</div>
+    <h2 class="contact__title reveal visible">
+      让下一个<br>
+      <span class="contact__title-accent glitch" data-text="好故事">好故事</span><br>
+      从这里开始
+    </h2>
+
+    <form class="contact__form reveal-scale reveal-delay-1 reveal-children visible" onsubmit="event.preventDefault(); alert('感谢留言！我会尽快回复你。');">
+      <div class="form-group">
+        <label for="name">姓名</label>
+        <input type="text" id="name" placeholder="你的名字" data-hover="">
+      </div>
+      <div class="form-group">
+        <label for="email">邮箱</label>
+        <input type="email" id="email" placeholder="your@email.com" data-hover="">
+      </div>
+      <div class="form-group">
+        <label for="message">项目描述</label>
+        <textarea id="message" rows="3" placeholder="简单描述你的需求..." data-hover=""></textarea>
+      </div>
+      <button type="submit" class="btn btn--primary glitch-flash" data-hover="" style="">
+        发送消息
+        <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5"></path>
+        </svg>
+      </button>
+    </form>
+
+    <a href="mailto:hello@studio.design" class="contact__email reveal reveal-delay-2 visible" data-hover="">
+      hello@studio.design
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5"></path>
+      </svg>
+    </a>
+    <div class="contact__socials reveal reveal-delay-3 visible">
+      <a href="#home" class="contact__social" data-hover="">Home</a>
+      <a href="#portfolio" class="contact__social" data-hover="">Portfolio</a>
+      <a href="#about" class="contact__social" data-hover="">About</a>
+      <a href="#contact" class="contact__social" data-hover="">Contact</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer reveal-fade visible">
+  <div class="footer__copy">© 2026 Design. 用心设计每一个像素。</div>
+  
+  <a href="#home" class="footer__back" data-hover="">返回顶部
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+      <path d="M8 13V3M8 3L3 8M8 3L13 8" stroke="currentColor" stroke-width="1.5"></path>
+    </svg>
+  </a>
+</footer>
+
+<!-- Detail Viewer -->
+<div class="detail-viewer__mask" id="detailViewerMask"></div>
+<div class="detail-viewer" id="detailViewer">
+  <div class="detail-viewer__header">
+    <span class="detail-viewer__title" id="detailViewerTitle">05 数据效果</span>
+    <button class="detail-viewer__close" id="detailViewerClose">✕</button>
+  </div>
+  <div class="detail-viewer__body" id="detailViewerBody">
+    <div id="detailViewerImgs"><img class="detail-viewer__img" src="assets/images/端午节海报.png" alt=""></div>
+    <p class="detail-viewer__desc" id="detailViewerDesc"></p>
+  </div>
+</div>
+
+<script src="js/main.js?v=4"></script>
+<script>
+(function() {
+  const filterBtns = document.querySelectorAll('[data-filter]');
+  const workCards = document.querySelectorAll('.stone-card');
+  const resultCount = document.getElementById('resultCount');
+  const emptyState = document.getElementById('stoneEmpty');
+  if (!filterBtns.length || !workCards.length) return;
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const filter = this.dataset.filter;
+      filterBtns.forEach(b => b.classList.remove('is-active'));
+      this.classList.add('is-active');
+      let visible = 0;
+      workCards.forEach(card => {
+        card.classList.remove('is-expanded');
+        const categories = card.dataset.category.split(' ');
+        if (filter === 'all' || categories.includes(filter)) {
+          card.classList.remove('is-hidden');
+          visible++;
+        } else {
+          card.classList.add('is-hidden');
+        }
+      });
+      if (resultCount) resultCount.textContent = visible;
+      if (emptyState) emptyState.classList.toggle('is-hidden', visible > 0);
+    });
+  });
+  workCards.forEach(card => {
+    const media = card.querySelector('.stone-card__media');
+    if (media) media.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const wasExpanded = card.classList.contains('is-expanded');
+      workCards.forEach(c => c.classList.remove('is-expanded'));
+      if (!wasExpanded) card.classList.add('is-expanded');
+    });
+  });
+
+  // Detail viewer
+  const viewer = document.getElementById('detailViewer');
+  const viewerMask = document.getElementById('detailViewerMask');
+  const viewerImgs = document.getElementById('detailViewerImgs');
+  const viewerTitle = document.getElementById('detailViewerTitle');
+  const viewerDesc = document.getElementById('detailViewerDesc');
+  const viewerClose = document.getElementById('detailViewerClose');
+
+  function openViewer(imgs, title, desc) {
+    const imgList = imgs.split(',').filter(s => s.trim());
+    viewerImgs.innerHTML = imgList.map(src =>
+      '<img class="detail-viewer__img" src="' + src.trim() + '" alt="">'
+    ).join('');
+    viewerTitle.textContent = title || '详情';
+    viewerDesc.textContent = desc || '';
+    viewer.classList.add('is-open');
+    viewerMask.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    // 滚动到顶部
+    const body = viewer.querySelector('.detail-viewer__body');
+    if (body) body.scrollTop = 0;
+  }
+
+  function closeViewer() {
+    viewer.classList.remove('is-open');
+    viewerMask.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  if (viewer && viewerClose) {
+    viewerClose.addEventListener('click', closeViewer);
+    viewerMask.addEventListener('click', closeViewer);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeViewer();
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    const item = e.target.closest('.stone-card__detail-item');
+    if (item && (item.dataset.img || item.dataset.imgs)) {
+      e.stopPropagation();
+      const imgs = item.dataset.imgs || item.dataset.img;
+      openViewer(imgs, item.dataset.title, item.dataset.desc);
+    }
+  });
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
