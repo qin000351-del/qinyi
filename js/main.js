@@ -604,3 +604,75 @@
 /* ============================================
    PORTFOLIO FILTER — handled in portfolio module above
    ============================================ */
+
+/* ============================================
+   CONTACT MODAL — in-page popup, no external app
+   ============================================ */
+(function() {
+  var trigger = document.querySelector('[data-contact-trigger]');
+  var modal = document.querySelector('[data-contact-modal]');
+  if (!trigger || !modal) return;
+
+  var closers = modal.querySelectorAll('[data-contact-close]');
+  var copyEls = modal.querySelectorAll('[data-copy]');
+  var hint = modal.querySelector('[data-contact-hint]');
+  var originalHint = hint ? hint.textContent : '';
+  var hintTimer = null;
+
+  function open(e) {
+    if (e) e.preventDefault();
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  trigger.addEventListener('click', open);
+
+  closers.forEach(function(el) {
+    el.addEventListener('click', close);
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+
+  function showCopied(label) {
+    if (!hint) return;
+    hint.textContent = '已复制 ' + label;
+    hint.classList.add('is-copied');
+    clearTimeout(hintTimer);
+    hintTimer = setTimeout(function() {
+      hint.textContent = originalHint;
+      hint.classList.remove('is-copied');
+    }, 2000);
+  }
+
+  copyEls.forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      var value = el.getAttribute('data-copy');
+      var label = el.getAttribute('data-label') || '';
+      if (!value) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).then(function() { showCopied(label); }).catch(function() {});
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = value;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        var done = false;
+        try { done = document.execCommand('copy'); } catch (err) {}
+        document.body.removeChild(ta);
+        if (done) showCopied(label);
+      }
+    });
+  });
+})();
