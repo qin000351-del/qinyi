@@ -3183,3 +3183,209 @@ body {
 
   .footer { padding: 24px 16px; }
 }
+
+/* ============================================
+   CONTACT MODAL — in-page popup, no external app
+   ============================================ */
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease), visibility 0s linear 0.4s;
+}
+
+.contact-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.4s var(--ease), visibility 0s linear 0s;
+}
+
+.contact-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.contact-modal__card {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  padding: 56px 44px 40px;
+  background: var(--bg);
+  border: 1px solid var(--border-hover);
+  border-radius: 4px;
+  text-align: center;
+  transform: translateY(16px) scale(0.98);
+  opacity: 0;
+  transition: transform 0.5s var(--ease) 0.05s, opacity 0.5s var(--ease) 0.05s;
+}
+
+.contact-modal.is-open .contact-modal__card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.contact-modal__close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  opacity: 0.6;
+  cursor: none;
+  transition: opacity 0.3s var(--ease);
+}
+
+.contact-modal__close:hover { opacity: 1; }
+
+.contact-modal__eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent-orange);
+  margin-bottom: 14px;
+}
+
+.contact-modal__title {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 200;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  margin-bottom: 30px;
+}
+
+.contact-modal__qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.contact-modal__qr-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  background: #fff;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+
+.contact-modal__qr.is-missing .contact-modal__qr-img { display: none; }
+
+.contact-modal__qr.is-missing::before {
+  content: '请放置微信二维码图片';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px dashed var(--border-hover);
+  border-radius: 4px;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0.45;
+  box-sizing: border-box;
+  margin-bottom: 14px;
+}
+
+.contact-modal__qr-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.contact-modal__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.contact-modal__row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: transparent;
+  border: 1px solid var(--border-hover);
+  border-radius: 4px;
+  color: var(--text);
+  text-align: left;
+  cursor: none;
+  font-family: inherit;
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.contact-modal__row:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--accent-orange);
+}
+
+.contact-modal__row-label {
+  flex: 0 0 48px;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.contact-modal__row-value {
+  flex: 1;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  word-break: break-all;
+}
+
+.contact-modal__row-action {
+  flex: 0 0 auto;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-orange);
+  opacity: 0.7;
+}
+
+.contact-modal__hint {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  transition: opacity 0.3s var(--ease);
+}
+
+.contact-modal__hint.is-copied {
+  color: var(--accent-orange);
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .contact-modal__card { padding: 48px 22px 32px; }
+  .contact-modal__close { top: 14px; right: 14px; }
+  .contact-modal__qr-img,
+  .contact-modal__qr.is-missing::before { width: 150px; height: 150px; }
+  .contact-modal__row { padding: 12px 14px; gap: 12px; }
+  .contact-modal__row-label { flex-basis: 40px; font-size: 0.65rem; }
+}
