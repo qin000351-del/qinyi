@@ -801,6 +801,50 @@
 <script src="js/main.js?v=4"></script>
 <script>
 (function() {
+  var lazyBackgrounds = document.querySelectorAll('[style*="background-image"]');
+  if (!lazyBackgrounds.length) return;
+
+  lazyBackgrounds.forEach(function(el) {
+    var match = el.getAttribute('style').match(/background-image:\s*url\((['"]?)(.*?)\1\)/i);
+    if (!match) return;
+    el.setAttribute('data-bg', match[2]);
+    el.style.removeProperty('background-image');
+  });
+
+  function loadBackground(el) {
+    var url = el.getAttribute('data-bg');
+    if (!url) return;
+    el.style.backgroundImage = 'url("' + url.replace(/"/g, '\\"') + '")';
+    el.removeAttribute('data-bg');
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    lazyBackgrounds.forEach(loadBackground);
+    return;
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      loadBackground(entry.target);
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: '500px 0px' });
+
+  lazyBackgrounds.forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+
+(function() {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(function() {});
+    });
+  }
+})();
+
+(function() {
   const filterBtns = document.querySelectorAll('[data-filter]');
   const workCards = document.querySelectorAll('.stone-card');
   const resultCount = document.getElementById('resultCount');
